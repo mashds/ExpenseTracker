@@ -29,50 +29,23 @@ This project follows MVVM with Repository Pattern.
 
 ```mermaid
 flowchart TD
-
     A[SwiftUI Views] --> B[ExpenseListViewModel]
-
     B --> C[ExpenseRepositoryProtocol]
     C --> D[ExpenseRepository]
-
     D --> E[ExpenseAPI Protocol]
     E --> F[MockExpenseAPI]
-
     F --> G[ExpenseLocalStore]
     G --> H[UserDefaults]
 
     B --> I[Expense Model]
     B --> J[CategorySummary Model]
-
-    subgraph View Layer
-        A
-    end
-
-    subgraph ViewModel Layer
-        B
-    end
-
-    subgraph Repository Layer
-        C
-        D
-    end
-
-    subgraph Data Layer
-        E
-        F
-        G
-        H
-    end
-
-    subgraph Model Layer
-        I
-        J
-    end
+```
 
 ### Architecture Flow
 
 The app follows MVVM with Repository Pattern.
 
+```text
 SwiftUI View
 ↓
 ViewModel
@@ -86,6 +59,20 @@ API Protocol
 Mock API / Local Store
 ↓
 UserDefaults
+```
+
+### Dependency Injection Flow
+
+Dependencies are injected using initializer-based dependency injection.
+
+```text
+ExpenseListView
+creates MockExpenseAPI
+creates ExpenseRepository(api: MockExpenseAPI)
+creates ExpenseListViewModel(repository: ExpenseRepository)
+```
+
+This keeps the ViewModel independent from the actual data source. Later, MockExpenseAPI can be replaced with a real HTTP API implementation without changing the ViewModel.
 
 ### View Layer
 
