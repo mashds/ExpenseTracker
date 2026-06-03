@@ -214,6 +214,7 @@ This improves compatibility with VoiceOver and screen readers.
 
 ## Project Structure
 
+```text
 ExpenseTracker
 │
 ├── App
@@ -238,6 +239,7 @@ ExpenseTracker
 │   └── ExpenseListViewModel.swift
 │
 ├── Views
+│   ├── SplashView.swift
 │   ├── ExpenseListView.swift
 │   ├── AddExpenseView.swift
 │   ├── ExpenseRowView.swift
@@ -247,8 +249,13 @@ ExpenseTracker
 │   ├── DateFormatterHelper.swift
 │   └── CurrencyFormatterHelper.swift
 │
+├── .github
+│   └── workflows
+│       └── ios-ci.yml
+│
 ├── ADR.md
 └── README.md
+```
 
 ## How to Build and Run
 
