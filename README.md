@@ -305,7 +305,45 @@ Included ADR topics:
 - Local persistence strategy
 - Client-side validation strategy
 
-## AI Usage Disclosure
+## AI Usage Evidence
+
+AI tools were used to support the development of this Expense Tracker iOS application.
+
+## Areas where AI was used
+
+- Architecture planning
+- SwiftUI implementation guidance
+- MVVM and Repository Pattern setup
+- Mock API design
+- Local persistence guidance
+- Unit test examples
+- README and ADR documentation
+- GitHub Actions CI troubleshooting
+- Swift/Xcode error troubleshooting
+
+## Sample Prompts Used
+
+1. I need to build an iOS Expense Tracker module using SwiftUI. The app should allow users to view expenses, add expenses, delete expenses, filter by category/date, and view category summaries. Please suggest a clean architecture and folder structure.
+
+2. Create Swift data models for an Expense Tracker app. The Expense model should include id, amount, currency, category, note, date, and createdAt.
+
+3. Create a protocol-based mock API layer for an iOS SwiftUI Expense Tracker app.
+
+4. Create a repository layer for the Expense Tracker app using the Repository Pattern.
+
+5. Create a SwiftUI ViewModel for the Expense Tracker app using MVVM.
+
+6. Create a SwiftUI expense list screen with loading, empty, error, add, filter, summary, and delete support.
+
+7. Add input validation with meaningful user feedback.
+
+8. Add offline persistence using UserDefaults.
+
+9. Create XCTest unit tests for adding expenses, sorting expenses, and calculating summaries.
+
+10. Create README.md and ADR.md documentation for the project.
+
+## Review Statement
 
 AI tools were used to assist with project planning, architecture guidance, SwiftUI implementation examples, troubleshooting, and documentation drafting.
 
