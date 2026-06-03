@@ -21,22 +21,26 @@ struct SummaryView: View {
                 )
             } else {
                 ForEach(viewModel.summaries) { summary in
-                    VStack(alignment: .leading, spacing: 6) {
+                    VStack(alignment: .leading, spacing: 8) {
                         HStack {
                             Text(summary.category.displayName)
                                 .font(.headline)
 
                             Spacer()
 
-                            Text("LKR \(summary.total, specifier: "%.2f")")
+                            Text(CurrencyFormatterHelper.format(amount: summary.total))
                                 .font(.headline)
                         }
 
-                        Text("\(summary.count) expenses • \(summary.percentage, specifier: "%.1f")%")
+                        ProgressView(value: summary.percentage, total: 100)
+
+                        Text("\(summary.count) expenses • \(summary.percentage, specifier: "%.1f")% of total spending")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
-                    .padding(.vertical, 6)
+                    .padding(.vertical, 8)
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel("\(summary.category.displayName), total \(CurrencyFormatterHelper.format(amount: summary.total)), \(summary.percentage, specifier: "%.1f") percent")
                 }
             }
         }
