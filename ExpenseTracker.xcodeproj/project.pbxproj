@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		E24210302FCFFA6F00380AF4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E2420FDB2FCFE1DD00380AF4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2420FE22FCFE1DD00380AF4;
+			remoteInfo = ExpenseTracker;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		E2420FE32FCFE1DD00380AF4 /* ExpenseTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E242102C2FCFFA6F00380AF4 /* ExpenseTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExpenseTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +27,22 @@
 			path = ExpenseTracker;
 			sourceTree = "<group>";
 		};
+		E242102D2FCFFA6F00380AF4 /* ExpenseTrackerTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ExpenseTrackerTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E2420FE02FCFE1DD00380AF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E24210292FCFFA6F00380AF4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				E2420FE52FCFE1DD00380AF4 /* ExpenseTracker */,
+				E242102D2FCFFA6F00380AF4 /* ExpenseTrackerTests */,
 				E2420FE42FCFE1DD00380AF4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				E2420FE32FCFE1DD00380AF4 /* ExpenseTracker.app */,
+				E242102C2FCFFA6F00380AF4 /* ExpenseTrackerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +95,29 @@
 			productReference = E2420FE32FCFE1DD00380AF4 /* ExpenseTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E242102B2FCFFA6F00380AF4 /* ExpenseTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E24210322FCFFA6F00380AF4 /* Build configuration list for PBXNativeTarget "ExpenseTrackerTests" */;
+			buildPhases = (
+				E24210282FCFFA6F00380AF4 /* Sources */,
+				E24210292FCFFA6F00380AF4 /* Frameworks */,
+				E242102A2FCFFA6F00380AF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E24210312FCFFA6F00380AF4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E242102D2FCFFA6F00380AF4 /* ExpenseTrackerTests */,
+			);
+			name = ExpenseTrackerTests;
+			packageProductDependencies = (
+			);
+			productName = ExpenseTrackerTests;
+			productReference = E242102C2FCFFA6F00380AF4 /* ExpenseTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +130,10 @@
 				TargetAttributes = {
 					E2420FE22FCFE1DD00380AF4 = {
 						CreatedOnToolsVersion = 26.2;
+					};
+					E242102B2FCFFA6F00380AF4 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = E2420FE22FCFE1DD00380AF4;
 					};
 				};
 			};
@@ -100,12 +152,20 @@
 			projectRoot = "";
 			targets = (
 				E2420FE22FCFE1DD00380AF4 /* ExpenseTracker */,
+				E242102B2FCFFA6F00380AF4 /* ExpenseTrackerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E2420FE12FCFE1DD00380AF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E242102A2FCFFA6F00380AF4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +182,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E24210282FCFFA6F00380AF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E24210312FCFFA6F00380AF4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E2420FE22FCFE1DD00380AF4 /* ExpenseTracker */;
+			targetProxy = E24210302FCFFA6F00380AF4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		E2420FEC2FCFE1E100380AF4 /* Debug */ = {
@@ -306,6 +381,46 @@
 			};
 			name = Release;
 		};
+		E24210332FCFFA6F00380AF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.desilva.maheesha.ExpenseTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExpenseTracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ExpenseTracker";
+			};
+			name = Debug;
+		};
+		E24210342FCFFA6F00380AF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.desilva.maheesha.ExpenseTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExpenseTracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ExpenseTracker";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -323,6 +438,15 @@
 			buildConfigurations = (
 				E2420FEF2FCFE1E100380AF4 /* Debug */,
 				E2420FF02FCFE1E100380AF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E24210322FCFFA6F00380AF4 /* Build configuration list for PBXNativeTarget "ExpenseTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E24210332FCFFA6F00380AF4 /* Debug */,
+				E24210342FCFFA6F00380AF4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

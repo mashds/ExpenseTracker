@@ -1,0 +1,334 @@
+# Expense Tracker iOS App
+
+## Overview
+
+Expense Tracker is a personal finance iOS application module that allows users to record daily expenses, categorize them, delete records, filter expenses, and view spending summaries.
+
+The app uses mocked/stubbed API responses, but the data and network layers are designed so that the mock API can be replaced with a real HTTP client with minimal changes.
+
+GitHub Repo Link - https://github.com/mashds/ExpenseTracker
+
+## Features
+
+- View recorded expenses sorted by date
+- Add a new expense with amount, category, note, and date
+- Delete an expense
+- Filter expenses by category and date range
+- View spending summary by category
+- Empty, loading, and error states
+- Input validation with meaningful user feedback
+- Currency formatting
+- Basic offline/local persistence using UserDefaults
+- Accessibility labels for screen reader support
+
+## Architecture
+
+This project follows MVVM with Repository Pattern.
+
+### Layers
+
+Views
+↓
+ViewModels
+↓
+Repository
+↓
+API / Local Store
+
+### View Layer
+
+The View layer is built using SwiftUI.
+
+Main views:
+
+- ExpenseListView
+- AddExpenseView
+- ExpenseRowView
+- SummaryView
+
+The views are responsible only for displaying UI and collecting user input.
+
+### ViewModel Layer
+
+The ViewModel handles UI state and business logic.
+
+Example responsibilities:
+
+- Loading expenses
+- Adding expenses
+- Deleting expenses
+- Applying filters
+- Showing loading state
+- Showing error messages
+- Validating user input
+
+Main ViewModel:
+
+ExpenseListViewModel
+
+### Repository Layer
+
+The Repository layer separates the ViewModel from the data source.
+
+Main files:
+
+- ExpenseRepositoryProtocol.swift
+- ExpenseRepository.swift
+
+This makes the app easier to test and allows the mock API to be replaced with a real backend later.
+
+### API Layer
+
+The API layer follows a protocol-based design.
+
+Main files:
+
+- ExpenseAPI.swift
+- MockExpenseAPI.swift
+
+The mock API supports:
+
+- GET /api/expenses
+- POST /api/expenses
+- DELETE /api/expenses/{id}
+- GET /api/expenses?category={cat}&from={date}&to={date}
+- GET /api/expenses/summary
+
+## Data Models
+
+### Expense
+
+Fields:
+
+- id: String
+- amount: Double
+- currency: String
+- category: food, transport, entertainment, shopping, bills, other
+- note: Optional String
+- date: Date
+- createdAt: Date
+
+### Category Summary
+
+Fields:
+
+- category: ExpenseCategory
+- total: Double
+- count: Int
+- percentage: Double
+
+## Offline Support
+
+The app includes basic offline/local persistence using UserDefaults.
+
+Expenses are encoded as JSON and saved locally. This allows expenses to remain available even after the app is closed and reopened.
+
+For a production app, SwiftData or Core Data would be better options for long-term storage and larger datasets.
+
+## Input Validation
+
+The app validates expense input before saving.
+
+Validation rules:
+
+- Amount is required
+- Amount must be a valid number
+- Amount must be greater than zero
+- Amount must not be too large
+- Expense date cannot be in the future
+
+If validation fails, the user sees a clear error message.
+
+## Spending Summary
+
+The Summary screen displays a category-wise breakdown of expenses.
+
+Each category summary includes:
+
+- Category name
+- Total amount
+- Number of expenses
+- Percentage of total spending
+- Progress indicator
+
+## Accessibility
+
+Accessibility support has been added for important UI elements.
+
+Examples:
+
+- Expense rows use combined accessibility labels
+- Add button has an accessibility label
+- Filter button has an accessibility label
+- Summary rows provide readable category, amount, and percentage information
+
+This improves compatibility with VoiceOver and screen readers.
+
+## Performance Considerations
+
+- The expense list uses SwiftUI List, which provides efficient row rendering.
+- Category summaries are calculated only when needed.
+- Filtering is handled in the repository/data layer instead of directly in the UI.
+- The mock API is abstracted behind a protocol, so it can be replaced with a real paginated API later.
+- Local persistence uses JSON encoding for simplicity.
+- For larger datasets, SwiftData/Core Data and pagination would be better choices.
+
+## Project Structure
+
+ExpenseTracker
+│
+├── App
+│   └── ExpenseTrackerApp.swift
+│
+├── Models
+│   ├── Expense.swift
+│   └── CategorySummary.swift
+│
+├── Network
+│   ├── ExpenseAPI.swift
+│   └── MockExpenseAPI.swift
+│
+├── Persistence
+│   └── ExpenseLocalStore.swift
+│
+├── Repository
+│   ├── ExpenseRepositoryProtocol.swift
+│   └── ExpenseRepository.swift
+│
+├── ViewModels
+│   └── ExpenseListViewModel.swift
+│
+├── Views
+│   ├── ExpenseListView.swift
+│   ├── AddExpenseView.swift
+│   ├── ExpenseRowView.swift
+│   └── SummaryView.swift
+│
+├── Utils
+│   ├── DateFormatterHelper.swift
+│   └── CurrencyFormatterHelper.swift
+│
+├── ADR.md
+└── README.md
+
+## How to Build and Run
+
+GitHub Repo Link - https://github.com/mashds/ExpenseTracker
+
+1. Clone the repository.
+
+git clone <repository-url>
+
+2. Open the project in Xcode.
+
+open ExpenseTracker.xcodeproj
+
+3. Select an iPhone simulator.
+
+Example:
+
+iPhone 17
+
+4. Press Command + R.
+
+The app should build and run in the simulator.
+
+## How to Run Tests
+
+Open the project in Xcode and press:
+
+Command + U
+
+Or run from Terminal:
+
+xcodebuild test -scheme ExpenseTracker -destination 'platform=iOS Simulator,name=iPhone 15'
+
+## Unit Tests
+
+The project includes unit tests for business/domain logic.
+
+Covered areas:
+
+- Adding an expense with valid data
+- Fetching expenses sorted by date
+- Calculating category summaries
+
+Minimum requirement satisfied:
+
+At least 3 meaningful unit tests covering business/domain logic.
+
+## CI Configuration
+
+Basic GitHub Actions CI is included in:
+
+.github/workflows/ios-ci.yml
+
+The workflow runs on push and pull request.
+
+It performs:
+
+- Checkout
+- Build
+- Test
+
+## Assumptions
+
+- Backend API is mocked.
+- Currency is fixed as LKR.
+- Expense categories are fixed.
+- Authentication is not required for this module.
+- Basic local persistence is implemented using UserDefaults.
+- The app is designed for iOS 16 or later.
+
+## What I Would Improve With More Time
+
+- Replace UserDefaults with SwiftData or Core Data
+- Add charts using Swift Charts
+- Add multi-currency selection
+- Add edit expense functionality
+- Add search functionality
+- Add better dependency injection
+- Add pagination support for large expense lists
+- Add more unit tests and UI tests
+- Add production-ready networking using URLSession
+
+## Architecture Decision Records
+
+Architecture decisions are documented in:
+
+ADR.md
+
+Included ADR topics:
+
+- MVVM architecture choice
+- Repository pattern with mock API
+- Local persistence strategy
+- Client-side validation strategy
+
+## AI Usage Disclosure
+
+AI tools were used to assist with project planning, architecture guidance, SwiftUI implementation examples, troubleshooting, and documentation drafting.
+
+All generated code and documentation were reviewed, adjusted, and tested before submission.
+
+## Submission Checklist
+
+Before submitting, verify:
+
+- Code compiles and runs
+- Expense list screen displays mocked/local expenses
+- Add expense functionality works
+- Delete expense functionality works
+- Filter functionality works
+- Spending summary screen works
+- Loading state is handled
+- Empty state is handled
+- Error state is handled
+- Input validation is implemented
+- Accessibility labels are added
+- README.md is present
+- ADR.md is present with at least 2 decision records
+- Unit tests pass
+- CI workflow file is included
+- No secrets, API keys, or credentials are committed
+- Commit history shows incremental progress
