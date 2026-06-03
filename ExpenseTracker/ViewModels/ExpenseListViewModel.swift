@@ -43,8 +43,34 @@ final class ExpenseListViewModel: ObservableObject {
     }
 
     func addExpense(amountText: String, category: ExpenseCategory, note: String, date: Date) async {
-        guard let amount = Double(amountText), amount > 0 else {
-            errorMessage = "Please enter a valid amount."
+        let trimmedAmount = amountText.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        guard !trimmedAmount.isEmpty else {
+            errorMessage = "Amount is required."
+            showError = true
+            return
+        }
+
+        guard let amount = Double(trimmedAmount) else {
+            errorMessage = "Amount must be a valid number."
+            showError = true
+            return
+        }
+
+        guard amount > 0 else {
+            errorMessage = "Amount must be greater than zero."
+            showError = true
+            return
+        }
+
+        guard amount <= 1_000_000 else {
+            errorMessage = "Amount is too large."
+            showError = true
+            return
+        }
+
+        guard date <= Date() else {
+            errorMessage = "Expense date cannot be in the future."
             showError = true
             return
         }
