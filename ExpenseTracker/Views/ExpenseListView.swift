@@ -59,6 +59,7 @@ struct ExpenseListView: View {
                     } label: {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                     }
+                    .accessibilityLabel("Filter expenses")
                 }
 
                 ToolbarItem(placement: .topBarTrailing) {
@@ -67,6 +68,7 @@ struct ExpenseListView: View {
                     } label: {
                         Image(systemName: "plus")
                     }
+                    .accessibilityLabel("Add new expense")
                 }
             }
             .sheet(isPresented: $showAddExpense) {

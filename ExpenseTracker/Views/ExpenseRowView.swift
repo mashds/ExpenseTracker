@@ -34,5 +34,9 @@ struct ExpenseRowView: View {
                 .font(.headline)
         }
         .padding(.vertical, 6)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(
+            "\(expense.category.displayName), \(CurrencyFormatterHelper.format(amount: expense.amount, currency: expense.currency)), \(expense.note ?? "No note"), date \(DateFormatterHelper.displayDate.string(from: expense.date))"
+        )
     }
 }
