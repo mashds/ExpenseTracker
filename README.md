@@ -25,15 +25,67 @@ GitHub Repo Link - https://github.com/mashds/ExpenseTracker
 
 This project follows MVVM with Repository Pattern.
 
-### Layers
+## Architecture Diagram
 
-Views
+```mermaid
+flowchart TD
+
+    A[SwiftUI Views] --> B[ExpenseListViewModel]
+
+    B --> C[ExpenseRepositoryProtocol]
+    C --> D[ExpenseRepository]
+
+    D --> E[ExpenseAPI Protocol]
+    E --> F[MockExpenseAPI]
+
+    F --> G[ExpenseLocalStore]
+    G --> H[UserDefaults]
+
+    B --> I[Expense Model]
+    B --> J[CategorySummary Model]
+
+    subgraph View Layer
+        A
+    end
+
+    subgraph ViewModel Layer
+        B
+    end
+
+    subgraph Repository Layer
+        C
+        D
+    end
+
+    subgraph Data Layer
+        E
+        F
+        G
+        H
+    end
+
+    subgraph Model Layer
+        I
+        J
+    end
+
+### Architecture Flow
+
+The app follows MVVM with Repository Pattern.
+
+SwiftUI View
 ↓
-ViewModels
+ViewModel
 ↓
-Repository
+Repository Protocol
 ↓
-API / Local Store
+Repository Implementation
+↓
+API Protocol
+↓
+Mock API / Local Store
+↓
+UserDefaults
 
 ### View Layer
 
@@ -307,7 +359,7 @@ Included ADR topics:
 
 ## AI Usage Evidence
 
-AI tools were used to support the development of this Expense Tracker iOS application.
+AI tools (ChatGPT) were used to support the development of this Expense Tracker iOS application.
 
 ## Areas where AI was used
 
