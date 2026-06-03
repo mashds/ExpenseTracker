@@ -8,8 +8,24 @@
 import Foundation
 
 final class MockExpenseAPI: ExpenseAPI {
+    
+    private let localStore: ExpenseLocalStoreProtocol
+    private var expenses: [Expense]
+    
+    init(localStore: ExpenseLocalStoreProtocol = ExpenseLocalStore()) {
+        self.localStore = localStore
 
-    private var expenses: [Expense] = [
+        let savedExpenses = localStore.loadExpenses()
+
+        if savedExpenses.isEmpty {
+            self.expenses = Self.defaultExpenses
+            localStore.saveExpenses(Self.defaultExpenses)
+        } else {
+            self.expenses = savedExpenses
+        }
+    }
+
+    private static let defaultExpenses: [Expense] = [
         Expense(
             id: UUID().uuidString,
             amount: 1200,
@@ -47,12 +63,14 @@ final class MockExpenseAPI: ExpenseAPI {
     func addExpense(_ expense: Expense) async throws -> Expense {
         try await Task.sleep(nanoseconds: 300_000_000)
         expenses.append(expense)
+        localStore.saveExpenses(expenses)
         return expense
     }
 
     func deleteExpense(id: String) async throws {
         try await Task.sleep(nanoseconds: 300_000_000)
         expenses.removeAll { $0.id == id }
+        localStore.saveExpenses(expenses)
     }
 
     func filterExpenses(category: ExpenseCategory?, from: Date?, to: Date?) async throws -> [Expense] {
