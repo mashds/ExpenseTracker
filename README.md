@@ -21,10 +21,6 @@ GitHub Repo Link - https://github.com/mashds/ExpenseTracker
 - Basic offline/local persistence using UserDefaults
 - Accessibility labels for screen reader support
 
-## Architecture
-
-This project follows MVVM with Repository Pattern.
-
 ## Architecture Diagram
 
 ```mermaid
@@ -103,7 +99,7 @@ Example responsibilities:
 
 Main ViewModel:
 
-ExpenseListViewModel
+- ExpenseListViewModel
 
 ### Repository Layer
 
@@ -263,19 +259,35 @@ GitHub Repo Link - https://github.com/mashds/ExpenseTracker
 
 1. Clone the repository.
 
-git clone <repository-url>
+```bash
+git clone https://github.com/mashds/ExpenseTracker.git
+```
 
-2. Open the project in Xcode.
+2. Go to the project folder.
 
+```bash
+cd ExpenseTracker
+```
+
+3. Open the project in Xcode.
+
+```bash
 open ExpenseTracker.xcodeproj
+```
 
-3. Select an iPhone simulator.
+4. Select an iPhone simulator.
 
 Example:
 
-iPhone 17
+```text
+iPhone 17 Pro
+```
 
-4. Press Command + R.
+5. Press:
+
+```text
+Command + R
+```
 
 The app should build and run in the simulator.
 
@@ -346,10 +358,14 @@ ADR.md
 
 Included ADR topics:
 
-- MVVM architecture choice
-- Repository pattern with mock API
-- Local persistence strategy
-- Client-side validation strategy
+- ADR-001: MVVM architecture choice
+- ADR-002: Repository pattern with mock API
+- ADR-003: UserDefaults local persistence strategy
+- ADR-004: Client-side input validation strategy
+- ADR-005: SwiftUI List for expense rendering
+- ADR-006: Currency formatting utility
+- ADR-007: Accessibility labels for important UI elements
+- ADR-008: Basic GitHub Actions CI configuration
 
 ## AI Usage Evidence
 
